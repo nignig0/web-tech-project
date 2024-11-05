@@ -9,6 +9,7 @@ body {
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
+  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -28,6 +29,11 @@ a{
 img {
   width: 100%;
   height: auto;
+}
+
+.bg-cover{
+    background-size: cover !important;
+    background-position: center !important;
 }
 
 
@@ -104,7 +110,7 @@ img {
 }
 
 /* button */
-.btn {
+.navbar-nav .btn, .slider-wrapper .btn-brand {
   display: inline-block;
   padding: 0.5rem 1rem;
   background-color: #923D41;
@@ -113,9 +119,10 @@ img {
   border-radius: 0rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  border-radius: 0.5rem;
 }
 
-.btn:hover {
+.navbar-nav .btn:hover {
   background-color: #333;
   color: #fff;
 }
@@ -128,3 +135,15 @@ img {
   margin-right: 1rem;
   margin-bottom: 1rem;
 }
+
+/* slider or carousel */
+.slide1 {
+  background: linear-gradient(rgba(9, 32, 50, 0.7), rgba(9, 32, 50, 0.4)), url('../images/carousel/mainimg.png');
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  color: #fff;
+}
+
