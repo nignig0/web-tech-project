@@ -89,11 +89,8 @@ img {
     font-size: 1.1rem;
     font-weight: 1000 !important;
     transition: all 0.2s ease;
-    color: #db141e;
 }
 .navbar .navbar-nav .nav-link.active {
-   
-    color: #923D41;
     font-weight: 600 !important; 
       
 
@@ -143,7 +140,46 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* text-align: center; */
   color: #fff;
 }
 
+.slide2 {
+  background: linear-gradient(rgba(9, 32, 50, 0.7), rgba(9, 32, 50, 0.4)), url('../images/carousel/subimg.png');
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+/* owl caroussel */
+.owl-prev, .owl-next {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.5rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease;
+  width: 4rem !important;
+  height: 4rem !important;  
+  display: grid !important;
+  place-items: center !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  border-radius: 100% !important;
+  margin-top: -2rem !important;
+  font-weight: 800 !important;
+  font-size: 1.1rem !important;
+}
+
+.owl-prev{
+  left: 0 !important;
+}
+
+.owl-next{
+  right: 0 !important;
+}
+
+.owl-prev:hover, .owl-next:hover {
+  background-color:#923D41 !important;
+}
