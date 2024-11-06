@@ -5,7 +5,7 @@ $(document).ready(function() {
         nav:true,
         items:1,
         smartSpeed: 1000,
-        autoplay:true,
+        // autoplay:true,
         autoplayTimeout:3000,
         dots: false,
         navText: ['PREV', 'NEXT'],
