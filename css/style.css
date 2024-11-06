@@ -161,6 +161,10 @@ img {
   color: #fff;
 }
 
+section{
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+}
 /* owl caroussel */
 .owl-prev, .owl-next {
   position: absolute !important;
@@ -192,3 +196,25 @@ img {
 .owl-prev:hover, .owl-next:hover {
   background-color:#923D41 !important;
 }
+
+
+/* information box */
+.info-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.info-box img {
+  width: 8rem;
+  height: auto;
+  margin-right: 1.8rem;
+  border-radius: 50%;
+}
+
+.movemateimgright{
+  height: 26rem;
+  width: 100%;
+  border-radius: 50%;
+}
+
