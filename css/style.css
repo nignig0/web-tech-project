@@ -152,6 +152,15 @@ img {
   color: #fff;
 }
 
+.slide3 {
+  background: linear-gradient(rgba(9, 32, 50, 0.7), rgba(9, 32, 50, 0.4)), url('../images/carousel/berekusoroad.png');
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
 /* owl caroussel */
 .owl-prev, .owl-next {
   position: absolute !important;
