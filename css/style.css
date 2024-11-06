@@ -162,7 +162,7 @@ img {
 }
 
 section{
-    padding-top: 4rem;
+    padding-top: 3rem;
     padding-bottom: 2rem;
 }
 /* owl caroussel */
@@ -218,3 +218,11 @@ section{
   border-radius: 50%;
 }
 
+.search-icon, .car-icon{
+  vertical-align: middle;
+}
+
+.step-box i{
+  font-size: 3rem;
+  margin-right: 0.1rem;
+}
