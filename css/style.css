@@ -112,15 +112,15 @@ img {
 
 /* button */
 .navbar-nav .btn, .slider-wrapper .btn-brand {
-  display: inline-block;
+  display: inline-block !important;
   padding: 0.5rem 1rem;
   background-color: #923D41;
   color: #fff;
   border: none;
-  border-radius: 0rem;
   cursor: pointer;
   transition: all 0.2s ease;
   border-radius: 0.5rem;
+  text-transform: uppercase;
 }
 
 .navbar-nav .btn:hover {
