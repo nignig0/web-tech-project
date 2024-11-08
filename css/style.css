@@ -168,6 +168,7 @@ img {
 section{
     padding-top: 3rem;
     padding-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 /* owl caroussel */
 .owl-prev, .owl-next {
@@ -262,5 +263,27 @@ section{
 .radius{
   border-top-left-radius: 2rem !important;
   border-top-right-radius: 2rem !important;
+}
+
+
+
+
+
+/* milestone */
+#milestone {
+  background: linear-gradient(rgba(146, 61, 65, 0.9), rgba(146, 61, 65, 0.9)), url('../images/carousel/mainimg.png');
+  padding: 5rem 0;
+}
+
+ #milestone p{
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+#milestone .display-4{
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 700;
 }
 
