@@ -11,13 +11,10 @@ $(document).ready(function() {
         navText: ['PREV', 'NEXT'],
         responsive:{
             0:{
-               
+               nav: false
             },
-            600:{
-               
-            },
-            1000:{
-               
+            768:{
+                nav: true
             }
         }
     })
