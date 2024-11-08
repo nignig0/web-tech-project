@@ -1,0 +1,120 @@
+
+.navbar {
+    background-color: #b30000; /* Dark red */
+    padding: 1rem 2rem; /* Adds padding for a larger look */
+}
+
+/* Navbar brand styling */
+.navbar-brand {
+    color: #ffffff; /* White color for better contrast */
+    font-weight: bold;
+    font-size: 1.5rem; /* Increases font size */
+}
+
+.navbar-brand:hover {
+    color: #f0eaef; /* Light red on hover */
+}
+
+/* Navbar link styling */
+.nav-link {
+    color: #ffffff;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+    color: #ffcccc; /* Light red on hover */
+}
+
+/* Active link styling */
+.nav-link.active {
+    color: #ffcccc;
+    font-weight: bold;
+}
+
+
+/* Disabled link styling */
+.nav-link.disabled {
+    color: #ff9999; /* Light pink to indicate disabled */
+    opacity: 0.7;
+}
+
+/* Navbar-toggler styling */
+.navbar-toggler {
+    border-color: #ffcccc; /* Light red border */
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+
+.card-header {
+    background-color: #b30000;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.card-header .brand {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.card-container {
+    width: 100%;
+    max-width: 80%;
+    height: 200%
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #9a0909;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.card-header .brand {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.card-header .year {
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.label {
+    color: #8b2e2e;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.value {
+    color: #333;
+    font-size: 0.9em;
+}
+
