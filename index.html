@@ -71,9 +71,17 @@
             <li class="nav-item">
                 <a class="nav-link active"  href="#home">Team</a>
             </li> 
-            <a href="">
-                <button class="btn btn-brand ms-lg-4 text-uppercase">Get Started</button>
-            </a>
+            <div class="btn-group ms-3 btn-brand" role="group" aria-label="Button group with nested dropdown">
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                 Get Started
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item text-uppercase" href="#">Login</a></li>
+                    <li><a class="dropdown-item text-uppercase" href="#">Signup</a></li>
+                  </ul>
+                </div>
+              </div>
         </ul>
         </div>
     </div>
