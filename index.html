@@ -66,7 +66,7 @@
                 <a class="nav-link active"  href="#reviews">Reviews</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active"  href="#contact">Contact Us</a>
+                <a class="nav-link active  btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#contact">Contact Us</a>
             </li>        
             <li class="nav-item">
                 <a class="nav-link active"  href="#team">Team</a>
@@ -469,7 +469,7 @@
                             <a href="#"><i class='bx bxl-facebook'></i></a>
                             <a href="#"><i class='bx bxl-twitter'></i></a>
                             <a href="#"><i class='bx bxl-instagram'></i></a>
-                            <a href="#"><i class='bx bxl-pinterest'></i></a>
+                            <a href="#"><i class='bx bxl-linkedin'></i></a>
                         </div>
                     </div>
                 </div>
@@ -479,6 +479,56 @@
             <p class="mb-0">Copyright@2020. All rights Reserved</p>
         </div>
     </footer>
+
+
+    <!-- Modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="container-fluid">
+                        <div class="row gy-4">
+                            <div class="col-lg-4 col-sm-12 bg-cover"
+                                style="background-image: url(images/carousel/mainimg.png); min-height:300px;">
+                                <div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <form class="p-lg-5 col-12 row g-3">
+                                    <div>
+                                        <h1>Get in touch</h1>
+                                    <p>Kindly reach out to us, we will respond to you as soon as possible</p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="userName" class="form-label">First name</label>
+                                        <input type="text" class="form-control" placeholder="Edward" id="userName"
+                                            aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="userName" class="form-label">Last name</label>
+                                        <input type="text" class="form-control" placeholder="Mensah" id="userName"
+                                            aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="userName" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" placeholder="eddiemens@gmail.com" id="userName"
+                                            aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="exampleInputEmail1" class="form-label">Enter Message</label>
+                                        <textarea name="" placeholder="Lets hear you out!" class="form-control" id=""  rows="4"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="button" class="btn btn-primary modal-btn">Submit</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
     <!-- replace the local jquery and bootstrap js with the cdn -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
