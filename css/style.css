@@ -535,3 +535,90 @@ input.form-control {
   box-shadow: none;
   border-color: #923D41;
 }
+
+
+
+/* modals  for login and sinup*/
+.modal-custom {
+  max-width: 32rem;
+  height: 100vh;
+  margin: auto;
+}
+
+.modal-body{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat !important;   
+}
+
+.modal-header, .modal-footer{
+  background-color: #923D41;
+}
+
+.modal-header,  .sign-in {
+  color: white;
+  border-bottom: none;
+}
+
+.sign-in:hover {
+  background-color: #333;
+  color: white;
+}
+
+.modal-custom .modal-content {
+  height: 100%;
+}
+
+.modal-custom .modal-body {
+  overflow-y: auto;
+}
+
+.login-content {
+  padding: 2rem;
+}
+
+/* Style for social login buttons */
+.btn-google {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.btn-google:hover {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.btn-facebook {
+  background-color:#fff;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.btn-facebook:hover {
+  background-color: #166fe5;
+  color: white;
+}
+
+
+
+/* Style for social icons */
+.social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+
+.btn-google img{
+  width: 30px;
+  height: 30px;
+}
+
+
+.sign-in, .create-account {
+  background-color: #923D41;
+}
+
+.sign-in:hover, .create-account:hover {
+  background-color: #333;
+}
