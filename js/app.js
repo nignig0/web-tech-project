@@ -25,7 +25,7 @@ $(document).ready(function() {
         loop:true,
         nav:true,
         smartSpeed: 1000,
-        autoplay:true,
+        // autoplay:true,
         autoplayTimeout:2000,
         margin: 25,
         dots: false,
@@ -45,6 +45,15 @@ $(document).ready(function() {
                dots: true
             }
         }
+    })
+
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav: false,
+        dots: true,
+        items: 1, 
+        smartSpeed: 1000,
     })
     
 });
