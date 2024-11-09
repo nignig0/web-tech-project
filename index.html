@@ -77,8 +77,12 @@
                  Get Started
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item text-uppercase" href="#">Login</a></li>
-                    <li><a class="dropdown-item text-uppercase" href="#">Signup</a></li>
+                    <button type="button" class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Login
+                    </button>
+                    <button type="button" class="btn btn-primary mt-3 ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Sinup
+                    </button>
                   </ul>
                 </div>
               </div>
@@ -481,56 +485,148 @@
     </footer>
 
 
-    <!-- Modal -->
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
+    <!-- Medium Width Centered Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-custom">
             <div class="modal-content">
-                <div class="modal-body p-0">
-                    <div class="container-fluid">
-                        <div class="row gy-4">
-                            <div class="col-lg-4 col-sm-12 bg-cover"
-                                style="background-image: url(images/carousel/mainimg.png); min-height:300px;">
-                                <div>
+                <div class="modal-header text-white">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="login-content">
+                        <form>
+                            <!-- Welcome Message -->
+                            <div class="text-center mb-5">
+                                <h2 class="mb-3">Welcome Back!</h2>
+                                <p class="text-muted">Please sign in to continue</p>
+                            </div>
+
+                            <!-- Login Form -->
+                            <div class="mb-4">
+                                <label for="emailInput" class="form-label">Email address</label>
+                                <input type="email" class="form-control form-control-lg" id="emailInput" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="passwordInput" class="form-label">Password</label>
+                                <input type="password" class="form-control form-control-lg" id="passwordInput" required>
+                            </div>
+                            <div class="mb-4 form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                            </div>
+                            <div class="d-grid mb-4">
+                                <button type="submit" class="btn btn-lg sign-in">Sign in</button>
+                            </div>
+
+                            <!-- Additional Options -->
+                            <div class="text-center mb-4">
+                                <a href="#" class="text-decoration-none">Forgot password?</a>
+                            </div>
+                            <!-- Social Login -->
+                            <div class="text-center mb-4">
+                                <p class="text-muted mb-4">Or sign in with</p>
+                                <div class="d-grid gap-2 text-center">
+                                    <button type="button" class="btn btn-google btn-lg d-flex align-items-center justify-content-around text-center">
+                                        <img src="images/modals/google.png" class="social-icon" alt="">
+                                        <span style="margin-left: 30px;">Sign in with Google</span>
+                                    </button>
+                                    <button type="button" class="btn btn-facebook btn-lg d-flex justify-content-around align-items-center text-center">
+                                        <img src="images/modals/facebook.png" class="social-icon" alt="">
+                                        <span ">Sign in with facebook</span>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="col-lg-8">
-                                <form class="p-lg-5 col-12 row g-3">
-                                    <div>
-                                        <h1>Get in touch</h1>
-                                    <p>Kindly reach out to us, we will respond to you as soon as possible</p>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label for="userName" class="form-label">First name</label>
-                                        <input type="text" class="form-control" placeholder="Edward" id="userName"
-                                            aria-describedby="emailHelp">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label for="userName" class="form-label">Last name</label>
-                                        <input type="text" class="form-control" placeholder="Mensah" id="userName"
-                                            aria-describedby="emailHelp">
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="userName" class="form-label">Email address</label>
-                                        <input type="email" class="form-control" placeholder="eddiemens@gmail.com" id="userName"
-                                            aria-describedby="emailHelp">
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="exampleInputEmail1" class="form-label">Enter Message</label>
-                                        <textarea name="" placeholder="Lets hear you out!" class="form-control" id=""  rows="4"></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="button" class="btn btn-primary modal-btn">Submit</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                      </div>
-                                </form>
+                            <!-- Sign Up Link -->
+                            <div class="text-center">
+                                <p class="mb-0">Don't have an account? <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign up</a></p>
                             </div>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
+                <div class="modal-footer text-white">
+                    <p class="w-100 text-center mb-0">© 2024 Your Company. All rights reserved.</p>
+                </div>
             </div>
+        </div>
     </div>
+
+
+    <!-- Sign Up Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-custom">
+            <div class="modal-content">
+                <div class="modal-header text-white">
+                    <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <div class="login-content">
+                        <form>
+                            <!-- Welcome Message -->
+                            <div class="text-center mb-5">
+                                <h2 class="mb-3">Create Account</h2>
+                                <p class="text-muted">Join us today! Please fill in your details</p>
+                            </div>
+
+                            <!-- Sign Up Form -->
+                            <div class="mb-4">
+                                <label for="nameInput" class="form-label">First Name</label>
+                                <input type="text" class="form-control form-control-lg" id="firstnameInput" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="nameInput" class="form-label">Last Name</label>
+                                <input type="text" class="form-control form-control-lg" id="lastnameInput" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="signupEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control form-control-lg" id="signupEmail" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="signupPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control form-control-lg" id="signupPassword" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control form-control-lg" id="confirmPassword" required>
+                            </div>
+                            <div class="mb-4 form-check">
+                                <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                                <label class="form-check-label" for="termsCheck">I agree to the Terms and Conditions</label>
+                            </div>
+                            <div class="d-grid mb-4">
+                                <button type="submit" class="btn btn-lg create-account text-white">Create Account</button>
+                            </div>
+
+                            <!-- Social Sign Up -->
+                            <div class="text-center mb-4">
+                                <p class="text-muted mb-4">Or sign up with</p>
+                                <div class="d-grid gap-2 text-center">
+                                    <button type="button" class="btn btn-google btn-lg d-flex align-items-center justify-content-around text-center">
+                                        <img src="images/modals/google.png" class="social-icon" alt="">
+                                        <span style="margin-left: 30px;">Sign in with Google</span>
+                                    </button>
+                                    <button type="button" class="btn btn-facebook btn-lg d-flex justify-content-around align-items-center text-center">
+                                        <img src="images/modals/facebook.png" class="social-icon" alt="">
+                                        <span ">Sign in with facebook</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Login Link -->
+                            <div class="text-center">
+                                <p class="mb-0">Already have an account? <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer text-white">
+                    <p class="w-100 text-center mb-0">© 2024 Your Company. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
     </div>
+
 
     <!-- replace the local jquery and bootstrap js with the cdn -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
