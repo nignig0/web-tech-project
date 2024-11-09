@@ -456,3 +456,50 @@ section{
   border-radius: 0.5rem;
   text-transform: uppercase;
 }
+
+/* footer */
+footer {
+  background: linear-gradient(rgba(146, 61, 65, 0.9), rgba(146, 61, 65, 0.9)), url('../images/carousel/mainimg.png');
+  background-position: center;
+  background-size: cover;
+}
+
+footer .footer-top {
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+footer .navbar-brand {
+  color: #fff;
+}
+
+footer p {
+  color: #ADB3B9;
+}
+
+footer .social-icons a {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.loader {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  z-index: 99999;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
