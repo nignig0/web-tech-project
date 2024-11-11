@@ -1,6 +1,6 @@
 
 .navbar {
-    background-color: #b30000; /* Dark red */
+    background-color: #923D41; /* Dark red */
     padding: 1rem 2rem; /* Adds padding for a larger look */
 }
 
@@ -51,7 +51,7 @@
 
 
 .card-header {
-    background-color: #b30000;
+    background-color: #923D41;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -66,7 +66,7 @@
 
 .card-container {
     width: 100%;
-    max-width: 80%;
+    max-width: 100%;
     height: 200%
 }
 
@@ -79,7 +79,7 @@
 }
 
 .card-header {
-    background-color: #9a0909;
+    background-color: #923D41;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -99,6 +99,7 @@
 
 .card-content {
     padding: 15px;
+    border: 1px;
 }
 
 .card-row {
@@ -108,7 +109,7 @@
 }
 
 .label {
-    color: #8b2e2e;
+    color: #923D41;
     font-weight: bold;
     font-size: 0.9em;
 }
@@ -116,5 +117,8 @@
 .value {
     color: #333;
     font-size: 0.9em;
+    word-spacing: 10px;
+
 }
+
 
