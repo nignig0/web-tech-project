@@ -1,0 +1,164 @@
+
+import React, { useState } from 'react';
+import { Bell, Plus, Search, ChevronRight, MapPin, Users, Clock, DollarSign, Calendar } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+
+const activityData = [
+  { name: 'Jan', rides: 40 },
+  { name: 'Feb', rides: 55 },
+  { name: 'Mar', rides: 45 },
+  { name: 'Apr', rides: 65 },
+  { name: 'May', rides: 50 },
+  { name: 'Jun', rides: 70 },
+];
+
+const recentRides = [
+  { id: 1, destination: 'Accra Mall', date: 'Mar 15', price: '₵25', seats: 2 },
+  { id: 2, destination: 'Legon', date: 'Mar 14', price: '₵30', seats: 1 },
+  { id: 3, destination: 'Cape Coast', date: 'Mar 12', price: '₵100', seats: 3 },
+];
+
+const Dashboard = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Navigation */}
+      <nav className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <div className="flex justify-between items-center">
+            <h1 className="text-2xl font-bold text-blue-600">MoveMates<span className="text-orange-500">.</span></h1>
+            <div className="flex items-center space-x-4">
+              <Bell className="w-6 h-6 text-gray-500" />
+              <div className="w-10 h-10 rounded-full bg-gray-200" />
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 py-6">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <h2 className="text-2xl font-semibold">Dashboard</h2>
+            <p className="text-gray-500">Welcome back, Edward!</p>
+          </div>
+          <button className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg">
+            <Plus className="w-5 h-5 mr-2" />
+            Create Ride
+          </button>
+        </div>
+
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-gray-500 text-sm">Total Rides</p>
+                  <h3 className="text-2xl font-bold">245</h3>
+                </div>
+                <MapPin className="w-8 h-8 text-blue-600" />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-gray-500 text-sm">Total Users</p>
+                  <h3 className="text-2xl font-bold">1.2k</h3>
+                </div>
+                <Users className="w-8 h-8 text-green-600" />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-gray-500 text-sm">Active Rides</p>
+                  <h3 className="text-2xl font-bold">12</h3>
+                </div>
+                <Clock className="w-8 h-8 text-orange-600" />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-gray-500 text-sm">Revenue</p>
+                  <h3 className="text-2xl font-bold">₵2.4k</h3>
+                </div>
+                <DollarSign className="w-8 h-8 text-purple-600" />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Activity Chart */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Ride Activity</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="h-72">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={activityData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Line type="monotone" dataKey="rides" stroke="#2563eb" strokeWidth={2} />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Recent Rides */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Recent Rides</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="text-left">
+                    <th className="pb-4 text-gray-500">Destination</th>
+                    <th className="pb-4 text-gray-500">Date</th>
+                    <th className="pb-4 text-gray-500">Price</th>
+                    <th className="pb-4 text-gray-500">Seats</th>
+                    <th className="pb-4 text-gray-500">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {recentRides.map((ride) => (
+                    <tr key={ride.id} className="border-t">
+                      <td className="py-4">{ride.destination}</td>
+                      <td className="py-4">{ride.date}</td>
+                      <td className="py-4">{ride.price}</td>
+                      <td className="py-4">{ride.seats}</td>
+                      <td className="py-4">
+                        <button className="text-blue-600 hover:text-blue-800">View Details</button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </CardContent>
+        </Card>
+      </main>
+    </div>
+  );
+};
+
+export default Dashboard;
