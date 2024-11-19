@@ -1,5 +1,5 @@
 <?php
-if($_SERVER)
+
 ?>
 
 <!doctype html>
@@ -15,36 +15,6 @@ if($_SERVER)
     <title>Movemates</title>
   </head>
   <body  data-bs-spy="scroll" data-bs-target=".navbar">
-    <!-- top navigation -->
-     <nav class="top-nav sticky-top" id="home">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-auto">
-                    <p>
-                        <span>
-                            <i class='bx bx-envelope'></i>
-                            movemates@gmail.com
-                        </span>
-                    </p>
-                    <p>
-                        <span>
-                            <i class='bx bx-phone'></i>
-                            +233 123 456 7890
-                        </span>
-                    </p>
-                </div>
-                <div class="col-auto">
-                   <!-- social link -->
-                    <div class="social-links">
-                        <a href="#"><i class='bx bxl-facebook'></i></a>
-                        <a href="#"><i class='bx bxl-twitter'></i></a>
-                        <a href="#"><i class='bx bxl-instagram'></i></a>
-                        <a href="#"><i class='bx bxl-linkedin'></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-     </nav>
     <!-- main navigation -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light sticky-top">
     <div class="container">
@@ -84,7 +54,7 @@ if($_SERVER)
                     <button type="button" class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
                         Login
                     </button>
-                    <button type="button" class="btn btn-primary mt-3 ms-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <button type="button" class="btn btn-primary mt-3 ms-3" data-bs-toggle="modal" data-bs-target="#signupModal">
                         Signup
                     </button>
                   </ul>
@@ -475,7 +445,7 @@ if($_SERVER)
                 </div>
                 <div class="modal-body">
                     <div class="login-content">
-                        <form method="POST" action="php_functions/login.php">
+                        <form method = "POST" action="php_functions/login.php">
                             <!-- Welcome Message -->
                             <div class="text-center mb-5">
                                 <h2 class="mb-3">Welcome Back!</h2>
@@ -485,11 +455,11 @@ if($_SERVER)
                             <!-- Login Form -->
                             <div class="mb-4">
                                 <label for="emailInput" class="form-label">Email address</label>
-                                <input type="email" class="form-control form-control-lg" id="emailInput" name = "email" required>
+                                <input type="email" class="form-control form-control-lg" id="emailInput" name="email" required>
                             </div>
                             <div class="mb-4">
                                 <label for="passwordInput" class="form-label">Password</label>
-                                <input type="password" class="form-control form-control-lg" id="passwordInput" name = "password" required>
+                                <input type="password" class="form-control form-control-lg" id="passwordInput" name="password" required>
                             </div>
                             <div class="mb-4 form-check">
                                 <input type="checkbox" class="form-check-input" id="rememberMe">
@@ -512,7 +482,7 @@ if($_SERVER)
                     </div>
                 </div>
                 <div class="modal-footer text-white">
-                    <p class="w-100 text-center mb-0">© 2024 Your Company. All rights reserved.</p>
+                    <p class="w-100 text-center mb-0">© 2024 Movemates. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -528,7 +498,7 @@ if($_SERVER)
                 </div>
                 <div class="modal-body bg-light">
                     <div class="login-content">
-                        <form>
+                        <form method="POST" action="php_functions/register.php">
                             <!-- Welcome Message -->
                             <div class="text-center mb-5">
                                 <h2 class="mb-3">Create Account</h2>
@@ -538,23 +508,23 @@ if($_SERVER)
                             <!-- Sign Up Form -->
                             <div class="mb-4">
                                 <label for="nameInput" class="form-label">First Name</label>
-                                <input type="text" class="form-control form-control-lg" id="firstnameInput" required>
+                                <input type="text" class="form-control form-control-lg" id="firstnameInput" name="firstName" required>
                             </div>
                             <div class="mb-4">
                                 <label for="nameInput" class="form-label">Last Name</label>
-                                <input type="text" class="form-control form-control-lg" id="lastnameInput" required>
+                                <input type="text" class="form-control form-control-lg" id="lastnameInput" name="lastName" required>
                             </div>
                             <div class="mb-4">
                                 <label for="signupEmail" class="form-label">Email address</label>
-                                <input type="email" class="form-control form-control-lg" id="signupEmail" required>
+                                <input type="email" class="form-control form-control-lg" id="signupEmail" name="email" required>
                             </div>
                             <div class="mb-4">
                                 <label for="signupPassword" class="form-label">Password</label>
-                                <input type="password" class="form-control form-control-lg" id="signupPassword" required>
+                                <input type="password" class="form-control form-control-lg" id="signupPassword" name="password" required>
                             </div>
                             <div class="mb-4">
                                 <label for="confirmPassword" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control form-control-lg" id="confirmPassword" required>
+                                <input type="password" class="form-control form-control-lg" id="confirmPassword" name="passwordConfirm" required>
                             </div>
                             <div class="mb-4 form-check">
                                 <input type="checkbox" class="form-check-input" id="termsCheck" required>
@@ -564,20 +534,7 @@ if($_SERVER)
                                 <button type="submit" class="btn btn-lg create-account text-white">Create Account</button>
                             </div>
 
-                            <!-- Social Sign Up -->
-                            <div class="text-center mb-4">
-                                <p class="text-muted mb-4">Or sign up with</p>
-                                <div class="d-grid gap-2 text-center">
-                                    <button type="button" class="btn btn-google btn-lg d-flex align-items-center justify-content-around text-center">
-                                        <img src="images/modals/google.png" class="social-icon" alt="">
-                                        <span style="margin-left: 30px;">Sign in with Google</span>
-                                    </button>
-                                    <button type="button" class="btn btn-facebook btn-lg d-flex justify-content-around align-items-center text-center">
-                                        <img src="images/modals/facebook.png" class="social-icon" alt="">
-                                        <span ">Sign in with facebook</span>
-                                    </button>
-                                </div>
-                            </div>
+                            
                             <!-- Login Link -->
                             <div class="text-center">
                                 <p class="mb-0">Already have an account? <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login</a></p>
@@ -586,7 +543,7 @@ if($_SERVER)
                     </div>
                 </div>
                 <div class="modal-footer text-white">
-                    <p class="w-100 text-center mb-0">© 2024 Your Company. All rights reserved.</p>
+                    <p class="w-100 text-center mb-0">© 2024 Movemates. All rights reserved.</p>
                 </div>
             </div>
         </div>

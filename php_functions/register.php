@@ -6,9 +6,10 @@ ini_set('display_errors', 1);
 
 $baseDir = dirname(__DIR__); 
 
-function register($username, $email, $password, $passwordConfirm){
+function register($email, $password, $passwordConfirm, $firstName, $lastName){
+    global $conn;
 
-    $statement  = $conn->prepare('SELECT email FROM mm_users WHERE email = ? AND username = ?');
+    $statement  = $conn->prepare('SELECT email FROM mm_users WHERE email = ?');
 
     if(!$statement){
         die('Error in connection '. $conn->error);
@@ -16,25 +17,27 @@ function register($username, $email, $password, $passwordConfirm){
 
     $statement->bind_param('s', $email);
     $statement->execute();
-    $result = $statement->fetch_assoc();
+    $result = $statement->get_result();
 
     if($result->num_rows > 0){
-        die('Email/Username are in use already');
+        die('Email in use already');
     }
 
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    $statement = $conn.prepare('INSERT into mm_users (username, email, password, role) VALUES (????)');
+    $statement = $conn->prepare('INSERT into mm_users (email, password, role, firstName, lastName) VALUES (?, ?, ?, ?, ?)');
 
     if(!$statement){
         die('Error in connection '. $conn->error);
     }
+    $role = "regular";
 
-    $statement->bind_params('ssss', $username, $email, $hashedPassword, "regular");
+    $statement->bind_param('sssss', $email, $hashedPassword, $role, $firstName, $lastName);
     if($statement->execute()){
+        $row = $result->fetch_assoc();
         $_SERVER['id'] = $row['id'];
         $_SERVER['email'] = $row['email'];
-        $_SERVER['username'] = $row['username'];
+        $_SERVER['firstName'] = $firstName;
         $_SERVER['role'] = $row['role'];
 
         header('Location: '.$baseDir.'feed.php'); #take them to the feed
@@ -47,25 +50,27 @@ function register($username, $email, $password, $passwordConfirm){
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $passwordConfirm = $_POST['passwordConfirm'];
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
 
-    if(empty($username) || empty($email) || empty($password) || empty($password)){
+    if(empty($email) || empty($password) || empty($password) || empty($firstName) || empty($lastName)){
         die("Enter all required fields please!");
     }
 
-    $username = trim($username);
     $email = trim($email);
     $password = trim($password);
     $passwordConfirm = trim($passwordConfirm);
+    $firstName = trim($firstName);
+    $lastName = trim($lastName);
 
     if($password != $passwordConfirm){
         die('Passwords do not match');
     }
 
-    register($username, $email, $password, $passwordConfirm);
+    register($email, $password, $passwordConfirm, $firstName, $lastName);
 }
 
 ?>

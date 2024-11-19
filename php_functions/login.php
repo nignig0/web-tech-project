@@ -8,7 +8,7 @@ $baseDir = dirname(__DIR__);
 function login($email, $password){
     global $conn;
 
-    $statement = $conn->prepare('SELECT id, email, username, password, role FROM mm_users WHERE email = ?');
+    $statement = $conn->prepare('SELECT id, email, password, role FROM mm_users WHERE email = ?');
     if(!$statement){
         die('Error in connection '. $conn->error);
     }
@@ -24,7 +24,7 @@ function login($email, $password){
         if(password_verify($password, $row['password'])){
             $_SERVER['id'] = $row['id'];
             $_SERVER['email'] = $row['email'];
-            $_SERVER['username'] = $row['username'];
+            $_SERVER['firstName'] = $row['firstName'];
             $_SERVER['role'] = $row['role'];
 
             header('Location: '.$baseDir.'feed.php'); #take them to the feed
