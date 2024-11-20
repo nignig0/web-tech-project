@@ -2,13 +2,16 @@
 include(__DIR__ . '/../db/config.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+session_start();
 
 $baseDir = dirname(__DIR__); 
 
-function createTrip($userId, $seats, $tripType,
+function createTrip($seats, $tripType,
  $destination, $meetUpSpot, $departureTime, $cost){
     global $conn;
 
+
+    $userId = $_SESSION['id'];
     $statement = $conn->prepare('INSERT INTO mm_trips(userId, seats, tripType, destination, meetUpSpot, departureTime, cost, originalCost, originalSeats) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
     if(!$statement){
         die('Error in connection '. $conn->error);
@@ -20,7 +23,13 @@ function createTrip($userId, $seats, $tripType,
     //we need to keep track of the original cost and the original seats
 
     if($statement->execute()){
-        header('Location: feed.php');
+
+        if(!$statement->execute()){
+            //would love to do a roll back on creating the trip here
+            die('Error creating trip!');
+        }
+
+        header('Location: /~tanitoluwa.adebayo/web-tech-project/feed.php'); 
     }else{
         die('Error in creating trip');
     }
@@ -108,7 +117,7 @@ function updateCost($tripId){
     global $conn;
 
     $trip = getTrip($tripId);
-    $cost = $trip['originalCost']/($trip['originalSeats'] - $trip['seats']);
+    $cost = $trip['originalCost']/($trip['originalSeats'] - $trip['seats'])+1; //plus one to count for the trip creator
 
     $statement = $conn->prepare('UPDATE mm_trips SET cost = ? WHERE id = ?');
     if(!$statement){
@@ -166,7 +175,7 @@ function joinTrip($userId, $tripId){
         die('Error in connection '. $conn->error);
     }
 
-    $statement->bind_params('ss', $userId, $tripId);
+    $statement->bind_param('ss', $userId, $tripId);
 
     
     if($statement->execute()){
@@ -200,7 +209,7 @@ function leaveTrip($userId, $tripId){
         die('Error in connection '. $conn->error);
     }
 
-    $statement->bind_params('ss', $userId, $tripId);
+    $statement->bind_param('ss', $userId, $tripId);
     
     if($statement->execute()){
         updateSeats($tripId, 1);
@@ -212,5 +221,34 @@ function leaveTrip($userId, $tripId){
 }
 
 if(isset($_GET['action']) && $_GET['action'] == 'getTrips') getTrips();
+if(isset($_GET['action']) && $_GET['action'] == 'getUserTrips') getUserTrips();
 
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'createTrip'){
+    $seats = $_POST['seats'];
+    $destination = $_POST['destination'];
+    $tripType = $_POST['tripType'];
+    $cost = $_POST['cost'];
+    $depTime = $_POST['depTime'];
+    $depDate = $_POST['depDate'];
+    $meetUpSpot = $_POST['meetUpSpot'];
+
+    if(empty($destination) || empty($seats) || empty($tripType) || empty($cost)
+    || empty($depTime) || empty($depDate) || empty($meetUpSpot)){
+        die("Enter all required fields please!");
+    }
+
+    if (!is_numeric($seats) || !is_numeric($cost)) {
+        die("Seats and cost must be numeric values.");
+    }
+
+    try {
+        $datetime = new DateTime("$depDate $depTime");
+        $dep = $datetime->format('Y-m-d H:i:s'); // Format the datetime properly
+    } catch (Exception $e) {
+        die("Invalid date or time provided.");
+    }
+
+    createTrip($seats, $tripType, $destination, $meetUpSpot, $dep, $cost);
+}
+    
 ?>

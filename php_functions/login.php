@@ -2,13 +2,14 @@
 include(__DIR__ . '/../db/config.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+session_start();
 
 $baseDir = dirname(__DIR__); 
 
 function login($email, $password){
     global $conn;
 
-    $statement = $conn->prepare('SELECT id, email, password, role FROM mm_users WHERE email = ?');
+    $statement = $conn->prepare('SELECT id, email, password, role, firstName FROM mm_users WHERE email = ?');
     if(!$statement){
         die('Error in connection '. $conn->error);
     }
@@ -28,7 +29,6 @@ function login($email, $password){
             $_SESSION['role'] = $row['role'];
 
             header('Location: /~tanitoluwa.adebayo/web-tech-project/feed.php'); #take them to the feed
-
         }
     }else{
         echo "<script>alert('password or email are incorrect')</script>";

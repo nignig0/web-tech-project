@@ -1,8 +1,7 @@
 <?php
 include "php_functions/auth_utils.php";
 session_start();
-//checkRole();
-echo $_SESSION['id'];
+checkRole();
 
 ?>
 
@@ -26,18 +25,24 @@ echo $_SESSION['id'];
     <div class="container">
         <div class="col-auto logo-container d-flex align-items-center">
             <img src="images/navbar/logo.png" alt="logo" class="logo">
-            <a class="navbar-brand" href="#">Movemates<span>.</span></a>
+            <a class="navbar-brand" href="index.php">Movemates<span>.</span></a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
+        <?php
+          echo '
+          <li class="nav-item">
+            <a class="nav-link active" href="index.php">Hello ' . htmlspecialchars($_SESSION['firstName']) . '</a>
+          </li>';
+        ?>
             <li class="nav-item">
-                <a class="nav-link active"  href="index.html">Home</a>
+                <a class="nav-link active"  href="index.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active"  href="index.html">Create Trip</a>
+                <a class="nav-link active"  href="create_trip.php">Create Trip</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active text-white  btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal" href="#contact">Contact Us</a>

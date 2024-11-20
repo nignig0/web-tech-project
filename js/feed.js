@@ -1,5 +1,5 @@
 function createCard(id, tripCreator, price, seatsLeft, depTime,
-    destination, tripType
+    destination, tripType, inTrip = false
 ){
     return `<section>         
         <div class="container">             
@@ -42,7 +42,10 @@ function createCard(id, tripCreator, price, seatsLeft, depTime,
                         <!-- New button row -->
                         <div class="row mt-3">
                             <div class="col-12 text-end">
-                                <button id = ${id} class="btn text-white" style="background-color: #923D41;">Join Trip</button>
+                                <button id = ${id}
+                                    onclick="${inTrip ? 'leaveTrip()' : 'joinTrip()'}"
+                                    class="btn text-white" style="background-color: ${inTrip ? '#01823E' : '#923D41'}">${inTrip ? 'Leave Trip' : 'Join Trip'}
+                                    </button>
                             </div>
                         </div>
                     </div>                 
@@ -54,20 +57,38 @@ function createCard(id, tripCreator, price, seatsLeft, depTime,
 
 function getUserTrips(){
 
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=getUserTrips', true);
+    const trips = [];
+    xhr.onload = ()=>{
+        console.log(xhr.responseText);
+        const responses = JSON.parse(xhr.responseText);
+
+        if(xhr.status == 200){
+           for(const response of responses){
+            trips.push(response);
+           }
+           
+           
+        }
+    }
+    xhr.send();
+    return trips;
 }
 
 function joinTrip(){
-
+    alert("Trip joined");
 }
 
 function leaveTrip(){
-
+    alert("Trip left");
 }
 
 function getTrips(){
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=getTrips', true);
     const trips = [];
+    const userTripIds = getUserTrips().map((t)=> t['id']);
     xhr.onload = ()=>{
         console.log(xhr.responseText);
         const responses = JSON.parse(xhr.responseText);
@@ -77,9 +98,12 @@ function getTrips(){
            //if card is in user trips, we should show a different card button
            for(const response of responses){
             const card = createCard(response['id'], 'Tani', response['cost'], response['seats'], response['departureTime'],
-                response['destination'], response['tripType']
+                response['destination'], response['tripType'],
+                userTripIds.includes(response['id'])
                );
                body.innerHTML += card;
+               //can do better here
+               //it's a little inefficient
            }
            
            
