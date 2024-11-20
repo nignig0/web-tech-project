@@ -85,12 +85,7 @@ function joinTrip(tripId){
     xhr.open('POST', `/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=joinTrip&tripId=${tripId}`, true);
     xhr.onload = ()=>{
         console.log(xhr.responseText);
-        if(xhr.status == 200){
-            alert("Trip joined");
-            location.reload();
-        }else{
-            alert("Error leaving trip");
-        }
+        location.reload();
     }
     xhr.send();
     
@@ -101,12 +96,7 @@ function leaveTrip(tripId){
     xhr.open('POST', `/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=leaveTrip&tripId=${tripId}`, true);
     xhr.onload = ()=>{
         console.log(xhr.responseText);
-        if(xhr.status == 200){
-            alert("Trip left");
-            location.reload();
-        }else{
-            alert("Error leaving trip");
-        }
+        location.reload();
     }
     xhr.send();
 }
