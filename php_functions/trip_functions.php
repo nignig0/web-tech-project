@@ -205,7 +205,7 @@ function leaveTrip($tripId){
     $statement->execute();
     $result = $statement->get_result();
 
-    if($result->num_rows == 0 ){
+    if($result->num_rows == 0){
         die('Record does not exist');
     }
 
@@ -255,6 +255,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['acti
     }
 
     createTrip($seats, $tripType, $destination, $meetUpSpot, $dep, $cost);
+}
+
+function deleteTrip($tripId){
+    global $conn;
+
+    $statement = $conn->prepare('DELETE FROM mm_trips WHERE id = ?');
+
+    if ($statement === false) {
+        echo '<script>alert("Error preparing statement: ' . $conn->error . '")</script>';
+        return;
+    }
+
+    $statement->bind_param('s', $tripIds);
+    
+    if($statement->execute()){
+        echo '<script>alert("Trip Deleted")</script>';
+    }else{
+        echo '<script>alert("Unable to delete trip")</script>';
+    }
+
+    $statement->close();
+
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'joinTrip'
