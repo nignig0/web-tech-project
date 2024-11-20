@@ -22,12 +22,12 @@ function login($email, $password){
         $row = $result->fetch_assoc();
         
         if(password_verify($password, $row['password'])){
-            $_SERVER['id'] = $row['id'];
-            $_SERVER['email'] = $row['email'];
-            $_SERVER['firstName'] = $row['firstName'];
-            $_SERVER['role'] = $row['role'];
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['firstName'] = $row['firstName'];
+            $_SESSION['role'] = $row['role'];
 
-            header('Location: '.$baseDir.'feed.php'); #take them to the feed
+            header('Location: /~tanitoluwa.adebayo/web-tech-project/feed.php'); #take them to the feed
 
         }
     }else{

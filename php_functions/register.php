@@ -35,10 +35,10 @@ function register($email, $password, $passwordConfirm, $firstName, $lastName){
     $statement->bind_param('sssss', $email, $hashedPassword, $role, $firstName, $lastName);
     if($statement->execute()){
         $row = $result->fetch_assoc();
-        $_SERVER['id'] = $row['id'];
-        $_SERVER['email'] = $row['email'];
-        $_SERVER['firstName'] = $firstName;
-        $_SERVER['role'] = $row['role'];
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['email'] = $row['email'];
+        $_SESSION['firstName'] = $firstName;
+        $_SESSION['role'] = $row['role'];
 
         header('Location: '.$baseDir.'feed.php'); #take them to the feed
     }else{
