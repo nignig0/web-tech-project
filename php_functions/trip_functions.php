@@ -38,7 +38,7 @@ function createTrip($seats, $tripType,
 
 function getTrips(){
     global $conn;
-    $statement = $conn->prepare('SELECT * FROM mm_trips ORDER BY id DESC');
+    $statement = $conn->prepare('SELECT * FROM mm_trips WHERE departureTime > NOW() AND seats > 0 ORDER BY id DESC');
     
     if(!$statement){
         die('Error in connection '. $conn->error);
@@ -58,6 +58,8 @@ function getTrips(){
  }
 
 function getUserTrips(){
+
+    //returns a list of (trip-id, user-id pairs)
     global $conn;
 
     $userId = $_SESSION['id'];
@@ -67,7 +69,7 @@ function getUserTrips(){
     }
 
     $statement->bind_param('s', $userId);
-    $statment->execute();
+    $statement->execute();
     
     $result = $statement->get_result();
     $trips = [];
@@ -117,7 +119,7 @@ function updateCost($tripId){
     global $conn;
 
     $trip = getTrip($tripId);
-    $cost = $trip['originalCost']/($trip['originalSeats'] - $trip['seats'])+1; //plus one to count for the trip creator
+    $cost = $trip['originalCost']/($trip['originalSeats'] - $trip['seats']+2); //plus two to show what would the next person joining would have to pay
 
     $statement = $conn->prepare('UPDATE mm_trips SET cost = ? WHERE id = ?');
     if(!$statement){
@@ -146,16 +148,18 @@ function getSeats($tripId){
     return $seats;
 }
 
-function joinTrip($userId, $tripId){
+function joinTrip($tripId){
     global $conn;
 
-    $statement = $conn->prepare('SELECT FROM mm_user_trip_relation WHERE userId = ? AND tripId = ?');
+    $userId = $_SESSION['id'];
+
+    $statement = $conn->prepare('SELECT * FROM mm_user_trip_relation WHERE userId = ? AND tripId = ?');
     if(!$statement){
         die('Error in connection '. $conn->error);
     }
 
     $statement->bind_param('ss', $userId, $tripId);
-    $statement->execite();
+    $statement->execute();
     $result = $statement->get_result();
 
     if($result->num_rows > 0 ){
@@ -180,23 +184,25 @@ function joinTrip($userId, $tripId){
     
     if($statement->execute()){
         updateSeats($tripId, -1);
-        updateCost($trip);
+        updateCost($tripId);
         header('Location: feed.php');
     }else{
         die('Error joining trip');
     }
 }
 
-function leaveTrip($userId, $tripId){
+function leaveTrip($tripId){
     global $conn;
 
-    $statement = $conn->prepare('SELECT FROM mm_user_trip_relation WHERE userId = ? AND tripId = ?');
+    $userId = $_SESSION['id'];
+
+    $statement = $conn->prepare('SELECT * FROM mm_user_trip_relation WHERE userId = ? AND tripId = ?');
     if(!$statement){
         die('Error in connection '. $conn->error);
     }
 
     $statement->bind_param('ss', $userId, $tripId);
-    $statement->execite();
+    $statement->execute();
     $result = $statement->get_result();
 
     if($result->num_rows == 0 ){
@@ -213,7 +219,7 @@ function leaveTrip($userId, $tripId){
     
     if($statement->execute()){
         updateSeats($tripId, 1);
-        updateCost($trip);
+        updateCost($tripId);
         header('Location: feed.php');
     }else{
         die('Error leaving  trip');
@@ -249,6 +255,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['acti
     }
 
     createTrip($seats, $tripType, $destination, $meetUpSpot, $dep, $cost);
+}
+
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'joinTrip'
+&& isset($_GET['tripId'])){
+    $tripId = $_GET['tripId'];
+    joinTrip($tripId);
+}
+
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'leaveTrip'
+&& isset($_GET['tripId'])){
+    $tripId = $_GET['tripId'];
+    leaveTrip($tripId);
 }
     
 ?>

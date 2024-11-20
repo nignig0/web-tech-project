@@ -42,8 +42,8 @@ function createCard(id, tripCreator, price, seatsLeft, depTime,
                         <!-- New button row -->
                         <div class="row mt-3">
                             <div class="col-12 text-end">
-                                <button id = ${id}
-                                    onclick="${inTrip ? 'leaveTrip()' : 'joinTrip()'}"
+                                <button
+                                    onclick="${inTrip ? `leaveTrip(${id})` : `joinTrip(${id})`}"
                                     class="btn text-white" style="background-color: ${inTrip ? '#01823E' : '#923D41'}">${inTrip ? 'Leave Trip' : 'Join Trip'}
                                     </button>
                             </div>
@@ -55,40 +55,70 @@ function createCard(id, tripCreator, price, seatsLeft, depTime,
     </section>`
 }
 
-function getUserTrips(){
+async function getUserTrips() {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=getUserTrips', true);
+
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                try {
+                    const responses = JSON.parse(xhr.responseText);
+                    resolve(responses);
+                } catch (e) {
+                    reject('Failed to parse JSON: ' + e.message);
+                }
+            } else {
+                reject('Error: ' + xhr.status);
+            }
+        };
+
+        xhr.onerror = () => reject('Network error');
+        xhr.send();
+    });
+}
+
+
+function joinTrip(tripId){
 
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=getUserTrips', true);
-    const trips = [];
+    xhr.open('POST', `/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=joinTrip&tripId=${tripId}`, true);
     xhr.onload = ()=>{
         console.log(xhr.responseText);
-        const responses = JSON.parse(xhr.responseText);
-
         if(xhr.status == 200){
-           for(const response of responses){
-            trips.push(response);
-           }
-           
-           
+            alert("Trip joined");
+            location.reload();
+        }else{
+            alert("Error leaving trip");
         }
     }
     xhr.send();
-    return trips;
+    
 }
 
-function joinTrip(){
-    alert("Trip joined");
+function leaveTrip(tripId){
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', `/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=leaveTrip&tripId=${tripId}`, true);
+    xhr.onload = ()=>{
+        console.log(xhr.responseText);
+        if(xhr.status == 200){
+            alert("Trip left");
+            location.reload();
+        }else{
+            alert("Error leaving trip");
+        }
+    }
+    xhr.send();
 }
 
-function leaveTrip(){
-    alert("Trip left");
-}
-
-function getTrips(){
+async function getTrips(){
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=getTrips', true);
-    const trips = [];
-    const userTripIds = getUserTrips().map((t)=> t['id']);
+    let userTripIds = await getUserTrips();
+    console.log(userTripIds);
+    userTripIds = userTripIds.map((t)=> t['tripId']);
+    console.log(userTripIds);
+
     xhr.onload = ()=>{
         console.log(xhr.responseText);
         const responses = JSON.parse(xhr.responseText);
