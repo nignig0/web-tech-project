@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoveMates - Your Trips</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #923D41;">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-car-side me-2"></i>MoveMates</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i>Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-plus me-1"></i>Create Trip</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-user me-1"></i>Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <div class="row mb-4">
+            <div class="col">
+                <h2><i class="fas fa-route me-2"></i>Your Upcoming Trips</h2>
+            </div>
+            <div class="col-auto">
+                <button class="btn text-white"  style="background-color: #923D41;">
+                    <i class="fas fa-plus me-1" ></i>New Trip
+                </button>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Trip Card 1 -->
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-primary">One Way</span>
+                            <span class="text-muted"><i class="fas fa-user me-1"></i>Created by Edward</span>
+                        </div>
+                        <h5 class="card-title">Peduase Lounge</h5>
+                        <div class="mb-3">
+                            <i class="far fa-calendar me-2"></i>
+                            <span>Nov 25, 2024</span>
+                        </div>
+                        <div class="mb-3">
+                            <i class="far fa-clock me-2"></i>
+                            <span>09:00 AM</span>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-dollar-sign me-2"></i>
+                            <span>$45 per person</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-outline-danger">Leave Ride</button>
+                            <span class="badge bg-success">3 seats left</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trip Card 2 -->
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-info">Round Trip</span>
+                            <span class="text-muted"><i class="fas fa-user me-1"></i>Created by Tani</span>
+                        </div>
+                        <h5 class="card-title">Dansoman Beach Road</h5>
+                        <div class="mb-3">
+                            <i class="far fa-calendar me-2"></i>
+                            <span>Nov 28, 2024</span>
+                        </div>
+                        <div class="mb-3">
+                            <i class="far fa-clock me-2"></i>
+                            <span>10:30 AM</span>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-dollar-sign me-2"></i>
+                            <span>$65 per person</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-outline-danger">Leave Ride</button>
+                            <span class="badge bg-warning">1 seat left</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trip Card 3 -->
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-primary">One Way</span>
+                            <span class="text-muted"><i class="fas fa-user me-1"></i>Created by Welile</span>
+                        </div>
+                        <h5 class="card-title">Accra Mall</h5>
+                        <div class="mb-3">
+                            <i class="far fa-calendar me-2"></i>
+                            <span>Dec 1, 2024</span>
+                        </div>
+                        <div class="mb-3">
+                            <i class="far fa-clock me-2"></i>
+                            <span>08:15 AM</span>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-dollar-sign me-2"></i>
+                            <span>$35 per person</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-outline-danger">Leave Ride</button>
+                            <span class="badge bg-success">4 seats left</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
