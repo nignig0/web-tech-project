@@ -33,20 +33,31 @@ checkRole();
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
         <?php
+        if(isset($_SESSION['firstName'])){
           echo '
           <li class="nav-item">
             <a class="nav-link active" href="index.php">Hello ' . htmlspecialchars($_SESSION['firstName']) . '</a>
           </li>';
+        }
+          
+
+          if($_SESSION['role'] == 'admin'){
+            echo '
+          <li class="nav-item">
+            <a class="nav-link active" href="admin_dashboard.php">admin dashboard </a>
+          </li>';
+          }
         ?>
             <li class="nav-item">
-                <a class="nav-link active"  href="index.php">Home</a>
+                <a class="nav-link active"  href="index.php">View Upcoming Trips</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active"  href="create_trip.php">Create Trip</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active text-white  btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal" href="#contact">Contact Us</a>
-            </li>        
+                <a class="nav-link active"  href="create_trip.php">Log Out</a>
+            </li>
+                  
         </ul>
         </div>
     </div>

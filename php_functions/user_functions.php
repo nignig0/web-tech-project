@@ -49,4 +49,56 @@ function deleteUser($userId){
 
 }
 
+function countUsers(){
+    global $conn;
+    $statement = $conn->prepare('SELECT COUNT(*) as count FROM mm_users');
+    $statement->execute();
+
+    if ($statement === false) {
+        echo '<script>alert("Error preparing statement: ' . $conn->error . '")</script>';
+        return;
+    }
+
+    $result = $statement->get_result();
+    $count = $result->fetch_assoc();
+    echo json_encode($count);
+
+}
+
+
+function countUsersLastThirtyDays(){
+    global $conn;
+    $statement = $conn->prepare('SELECT COUNT(*) as count FROM mm_users WHERE createdAt >= NOW() - INTERVAL 30 DAY');
+    $statement->execute();
+
+    if ($statement === false) {
+        echo '<script>alert("Error preparing statement: ' . $conn->error . '")</script>';
+        return;
+    }
+
+    $result = $statement->get_result();
+    $count = $result->fetch_assoc();
+    echo json_encode($count);
+
+}
+
+function getUsers($userId){
+    global $conn;
+    $statement = $conn->prepare('SELECT firstName, lastName, email FROM mm_users WHERE id = ?');
+    if ($statement === false) {
+        echo '<script>alert("Error preparing statement: ' . $conn->error . '")</script>';
+        return;
+    }
+    $statement->bind_param('i', $userId);
+    $statement->execute();
+    $result= $statement->get_result();
+    $user = $result->fetch_assoc();
+    
+    echo json_encode($user);
+    
+}
+
+if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getTotalUsers') countUsers();
+if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'get30DayUsers') countUsersLastThirtyDays();
+
 ?>

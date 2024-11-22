@@ -38,7 +38,7 @@ function createTrip($seats, $tripType,
 
 function getTrips(){
     global $conn;
-    $statement = $conn->prepare('SELECT * FROM mm_trips WHERE departureTime > NOW() AND seats > 0 ORDER BY id DESC');
+    $statement = $conn->prepare('SELECT * FROM mm_trips WHERE departureTime > NOW() AND seats > 0 ORDER BY departureTime');
     
     if(!$statement){
         die('Error in connection '. $conn->error);
@@ -279,6 +279,41 @@ function deleteTrip($tripId){
 
 }
 
+function countActiveTrips(){
+    //get Active trips/upcoming trips
+    global $conn;
+    $statement = $conn->prepare('SELECT COUNT(*) as count FROM mm_trips WHERE departureTime >= NOW()');
+    $statement->execute();
+    
+    if ($statement === false) {
+        echo '<script>alert("Error preparing statement: ' . $conn->error . '")</script>';
+        return;
+    }
+    
+    $result = $statement->get_result();
+    $count = $result->fetch_assoc();
+    echo json_encode($count);
+    
+}
+
+function countTrips(){
+    //get Active trips/upcoming trips
+    global $conn;
+    $statement = $conn->prepare('SELECT COUNT(*) as count FROM mm_trips');
+    $statement->execute();
+    
+    if ($statement === false) {
+        echo '<script>alert("Error preparing statement: ' . $conn->error . '")</script>';
+        return;
+    }
+    
+    $result = $statement->get_result();
+    $count = $result->fetch_assoc();
+    echo json_encode($count);
+    
+}
+
+
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'joinTrip'
 && isset($_GET['tripId'])){
     $tripId = $_GET['tripId'];
@@ -290,5 +325,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['acti
     $tripId = $_GET['tripId'];
     leaveTrip($tripId);
 }
+
+if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getTotalTrips') countTrips();
+if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getActiveTrips') countActiveTrips();
     
 ?>

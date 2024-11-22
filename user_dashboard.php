@@ -1,3 +1,11 @@
+<?php
+include "php_functions/auth_utils.php";
+session_start();
+checkRole();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +66,7 @@
                 <h2><i class="fas fa-route me-2"></i>Your Upcoming Trips</h2>
             </div>
             <div class="col-auto">
-                <a href="create_trip.html">
+                <a href="create_trip.php">
                     <button class="btn text-white" style="background-color: #923D41;">
                         <i class="fas fa-plus me-1"></i>Create New Trip
                     </button>
@@ -68,37 +76,7 @@
 
         <div class="row g-4">
             <!-- Trip Card 1 -->
-            <div class="col-12 col-md-6">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="badge bg-primary">One Way</span>
-                        </div>
-                        <h5 class="card-title">Accra Mall</h5>
-                        <div class="mb-3">
-                            <i class="far fa-calendar me-2"></i>
-                            <span>Nov 25, 2024</span>
-                        </div>
-                        <div class="mb-3">
-                            <i class="far fa-clock me-2"></i>
-                            <span>09:00 AM</span>
-                        </div>
-                        <div class="mb-3">
-                            <i class="fas fa-dollar-sign me-2"></i>
-                            <span>$45 per person</span>
-                        </div>
-                        <div class="mb-3">
-                            <i class="fas fa-dollar-sign me-2"></i>
-                            <span>Meet Up Spot: </span>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center">
-                            <button class="btn btn-outline-danger">View Details</button>
-                            <span class="badge bg-success">3 seats left</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
 
 
 

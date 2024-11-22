@@ -1,3 +1,5 @@
+import { getUserById } from "./user";
+
 function createCard(id, tripCreator, price, seatsLeft, depTime,
     destination, tripType, inTrip = false
 ){
@@ -79,7 +81,7 @@ async function getUserTrips() {
 }
 
 
-function joinTrip(tripId){
+export function joinTrip(tripId){
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', `/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=joinTrip&tripId=${tripId}`, true);
@@ -91,7 +93,7 @@ function joinTrip(tripId){
     
 }
 
-function leaveTrip(tripId){
+export function leaveTrip(tripId){
     const xhr = new XMLHttpRequest();
     xhr.open('POST', `/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=leaveTrip&tripId=${tripId}`, true);
     xhr.onload = ()=>{
@@ -109,7 +111,7 @@ async function getTrips(){
     userTripIds = userTripIds.map((t)=> t['tripId']);
     console.log(userTripIds);
 
-    xhr.onload = ()=>{
+    xhr.onload = async ()=>{
         console.log(xhr.responseText);
         const responses = JSON.parse(xhr.responseText);
 
@@ -117,7 +119,8 @@ async function getTrips(){
            const body = document.getElementsByTagName('body')[0];
            //if card is in user trips, we should show a different card button
            for(const response of responses){
-            const card = createCard(response['id'], 'Tani', response['cost'], response['seats'], response['departureTime'],
+            const user = await getUserById(response['userId']);
+            const card = createCard(response['id'], `${user['firstName']} ${user['lastName']}`, response['cost'], response['seats'], response['departureTime'],
                 response['destination'], response['tripType'],
                 userTripIds.includes(response['id'])
                );
