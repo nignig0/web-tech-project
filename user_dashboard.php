@@ -74,7 +74,7 @@ checkRole();
             </div>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4" id="tripHolder">
             <!-- Trip Card 1 -->
             
 
@@ -85,5 +85,6 @@ checkRole();
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/user_dashboard.js"></script>
 </body>
 </html>

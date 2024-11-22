@@ -1,4 +1,4 @@
-import { getUserById } from "./user";
+import { getUserById } from "./user.js";
 
 function createCard(id, tripCreator, price, seatsLeft, depTime,
     destination, tripType, inTrip = false
@@ -57,7 +57,7 @@ function createCard(id, tripCreator, price, seatsLeft, depTime,
     </section>`
 }
 
-async function getUserTrips() {
+export async function getUserTrips() {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=getUserTrips', true);

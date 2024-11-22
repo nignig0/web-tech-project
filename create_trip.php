@@ -44,7 +44,7 @@ checkRole();
           }
         ?>
             <li class="nav-item">
-                <a class="nav-link active"  href="index.php">View Upcoming Trips</a>
+                <a class="nav-link active"  href="user_dashboard.php">View Upcoming Trips</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active"  href="create_trip.php">Create Trip</a>

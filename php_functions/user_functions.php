@@ -82,7 +82,7 @@ function countUsersLastThirtyDays(){
 
 }
 
-function getUsers($userId){
+function getUser($userId){
     global $conn;
     $statement = $conn->prepare('SELECT firstName, lastName, email FROM mm_users WHERE id = ?');
     if ($statement === false) {
@@ -100,5 +100,7 @@ function getUsers($userId){
 
 if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getTotalUsers') countUsers();
 if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'get30DayUsers') countUsersLastThirtyDays();
+if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getUser') getUser($_GET['userId']);
+
 
 ?>

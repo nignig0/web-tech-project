@@ -114,6 +114,10 @@ function getTrip($tripId){
     return $trip;
 }
 
+function getTripJson($tripId){
+    echo json_encode(getTrip($tripId));
+}
+
 function updateCost($tripId){
     //factor can either be +1 or -1
     global $conn;
@@ -226,37 +230,6 @@ function leaveTrip($tripId){
     }
 }
 
-if(isset($_GET['action']) && $_GET['action'] == 'getTrips') getTrips();
-if(isset($_GET['action']) && $_GET['action'] == 'getUserTrips') getUserTrips();
-
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'createTrip'){
-    $seats = $_POST['seats'];
-    $destination = $_POST['destination'];
-    $tripType = $_POST['tripType'];
-    $cost = $_POST['cost'];
-    $depTime = $_POST['depTime'];
-    $depDate = $_POST['depDate'];
-    $meetUpSpot = $_POST['meetUpSpot'];
-
-    if(empty($destination) || empty($seats) || empty($tripType) || empty($cost)
-    || empty($depTime) || empty($depDate) || empty($meetUpSpot)){
-        die("Enter all required fields please!");
-    }
-
-    if (!is_numeric($seats) || !is_numeric($cost)) {
-        die("Seats and cost must be numeric values.");
-    }
-
-    try {
-        $datetime = new DateTime("$depDate $depTime");
-        $dep = $datetime->format('Y-m-d H:i:s'); // Format the datetime properly
-    } catch (Exception $e) {
-        die("Invalid date or time provided.");
-    }
-
-    createTrip($seats, $tripType, $destination, $meetUpSpot, $dep, $cost);
-}
-
 function deleteTrip($tripId){
     global $conn;
 
@@ -313,6 +286,36 @@ function countTrips(){
     
 }
 
+if(isset($_GET['action']) && $_GET['action'] == 'getTrips') getTrips();
+if(isset($_GET['action']) && $_GET['action'] == 'getUserTrips') getUserTrips();
+
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'createTrip'){
+    $seats = $_POST['seats'];
+    $destination = $_POST['destination'];
+    $tripType = $_POST['tripType'];
+    $cost = $_POST['cost'];
+    $depTime = $_POST['depTime'];
+    $depDate = $_POST['depDate'];
+    $meetUpSpot = $_POST['meetUpSpot'];
+
+    if(empty($destination) || empty($seats) || empty($tripType) || empty($cost)
+    || empty($depTime) || empty($depDate) || empty($meetUpSpot)){
+        die("Enter all required fields please!");
+    }
+
+    if (!is_numeric($seats) || !is_numeric($cost)) {
+        die("Seats and cost must be numeric values.");
+    }
+
+    try {
+        $datetime = new DateTime("$depDate $depTime");
+        $dep = $datetime->format('Y-m-d H:i:s'); // Format the datetime properly
+    } catch (Exception $e) {
+        die("Invalid date or time provided.");
+    }
+
+    createTrip($seats, $tripType, $destination, $meetUpSpot, $dep, $cost);
+}
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'joinTrip'
 && isset($_GET['tripId'])){
@@ -328,5 +331,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['acti
 
 if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getTotalTrips') countTrips();
 if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getActiveTrips') countActiveTrips();
-    
+if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getTripById') getTripJson($_GET['tripId']);    
 ?>

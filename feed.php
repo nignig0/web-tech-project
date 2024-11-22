@@ -49,7 +49,7 @@ checkRole();
           }
         ?>
             <li class="nav-item">
-                <a class="nav-link active"  href="index.php">View Upcoming Trips</a>
+                <a class="nav-link active"  href="user_dashboard.php">View Upcoming Trips</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active"  href="create_trip.php">Create Trip</a>
@@ -74,6 +74,6 @@ checkRole();
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/feed.js"></script>
+    <script type="module" src="js/feed.js"></script>
   </body>
 </html>
