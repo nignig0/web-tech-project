@@ -482,10 +482,15 @@
                             <div class="mb-4">
                                 <label for="emailInput" class="form-label">Email address</label>
                                 <input type="email" class="form-control form-control-lg" id="emailInput" required>
+                                <!-- add element to show error message -->
+                                <div id="emailError" style="color: red;"></div>
+
                             </div>
                             <div class="mb-4">
                                 <label for="passwordInput" class="form-label">Password</label>
                                 <input type="password" class="form-control form-control-lg" id="passwordInput" required>
+                                <!-- add element to show error message -->
+                                <div id="passwordError" style="color: red;"></div>
                             </div>
                             <div class="mb-4 form-check">
                                 <input type="checkbox" class="form-check-input" id="rememberMe">
@@ -549,22 +554,27 @@
                             <div class="mb-4">
                                 <label for="nameInput" class="form-label">First Name</label>
                                 <input type="text" class="form-control form-control-lg" id="firstnameInput" required>
+                                <div id="firstNameError" style="color: red;"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="nameInput" class="form-label">Last Name</label>
                                 <input type="text" class="form-control form-control-lg" id="lastnameInput" required>
+                                <div id="lastNameError" style="color: red;"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="signupEmail" class="form-label">Email address</label>
-                                <input type="email" class="form-control form-control-lg" id="signupEmail" required>
+                                <input type="email" class="form-control form-control-lg" id="signupEmail">
+                                <div id="emailError2" style="color: red !important; "></div>
                             </div>
                             <div class="mb-4">
                                 <label for="signupPassword" class="form-label">Password</label>
                                 <input type="password" class="form-control form-control-lg" id="signupPassword" required>
+                                <div id="passwordError" style="color: red"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="confirmPassword" class="form-label">Confirm Password</label>
                                 <input type="password" class="form-control form-control-lg" id="confirmPassword" required>
+                                <div id="confirmPasswordError" style="color: red;"></div>
                             </div>
                             <div class="mb-4 form-check">
                                 <input type="checkbox" class="form-check-input" id="termsCheck" required>
@@ -684,5 +694,6 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
