@@ -17,5 +17,11 @@ function checkIfAdmin(){
     }
 }
 
+function handleIfLoggedIn(){
+    if(isset($_SESSION['id'])){
+        header('Location: '.$baseDir.'feed.php'); 
+    }
+}
+
 ?>
 

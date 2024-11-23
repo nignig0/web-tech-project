@@ -1,6 +1,7 @@
 <?php
-
+include "php_functions/auth_utils.php";
 session_start();
+handleIfLoggedIn();
 
 ?>
 

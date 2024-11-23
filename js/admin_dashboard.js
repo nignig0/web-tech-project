@@ -1,6 +1,9 @@
-function getTotalTrips(){
+
+
+
+export function getTotalTrips(){
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=getTotalTrips');
+    xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=getTotalTrips', true);
     xhr.onload = ()=>{
         console.log(xhr.responseText);
         if(xhr.status >= 200 && xhr.status < 400){
@@ -18,9 +21,9 @@ function getTotalTrips(){
     xhr.send();
 }
 
-function getActiveTrips(){
+export function getActiveTrips(){
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=getActiveTrips');
+    xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=getActiveTrips', true);
     xhr.onload = ()=>{
         console.log(xhr.responseText);
         if(xhr.status >= 200 && xhr.status < 400){
@@ -38,9 +41,9 @@ function getActiveTrips(){
     xhr.send();
 }
 
-function getTotalUsers(){
+export function getTotalUsers(){
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/user_functions.php?action=getTotalUsers');
+    xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/user_functions.php?action=getTotalUsers', true);
     xhr.onload = ()=>{
         console.log(xhr.responseText);
         if(xhr.status >= 200 && xhr.status < 400){
@@ -58,9 +61,9 @@ function getTotalUsers(){
     xhr.send();
 }
 
-function get30DaysUsers(){
+export function get30DaysUsers(){
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/user_functions.php?action=get30DayUsers');
+    xhr.open('GET', '/~tanitoluwa.adebayo/web-tech-project/php_functions/user_functions.php?action=get30DayUsers', true);
     xhr.onload = ()=>{
         console.log(xhr.responseText);
         if(xhr.status >= 200 && xhr.status < 400){

@@ -57,6 +57,27 @@ function getTrips(){
     echo json_encode($trips);
  }
 
+ function getAllTrips(){
+    global $conn;
+    $statement = $conn->prepare('SELECT * FROM mm_trips ORDER BY id DESC');
+    
+    if(!$statement){
+        die('Error in connection '. $conn->error);
+    }
+
+    $statement->execute();
+    $result = $statement->get_result();
+    $trips = [];
+    
+    if(!empty($result)){
+        while($row = $result->fetch_assoc()){
+            $trips[] = $row;
+        }
+    }
+
+    echo json_encode($trips);
+ }
+
 function getUserTrips(){
 
     //returns a list of (trip-id, user-id pairs)
@@ -331,5 +352,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['acti
 
 if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getTotalTrips') countTrips();
 if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getActiveTrips') countActiveTrips();
-if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getTripById') getTripJson($_GET['tripId']);    
+if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getTripById') getTripJson($_GET['tripId']);   
+if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getAllTrips') getAllTrips();    
+if($_SERVER['REQUEST_METHOD'] == 'DELETE' && $_GET['action'] == 'deleteTrip') deleteTrip($_GET['tripId']);   
 ?>

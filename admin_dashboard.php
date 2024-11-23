@@ -29,7 +29,7 @@ checkIfadmin();
                         <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i>Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="index.html"><i class="fas fa-sign-out-alt me-1"></i>Logout</a>
+                        <a class="nav-link text-white" href="php_functions/logout.php"><i class="fas fa-sign-out-alt me-1"></i>Logout</a>
                     </li>
                 </ul>
             </div>
@@ -92,7 +92,7 @@ checkIfadmin();
                             </li>
                         </ul>
                         <div class="mt-3">
-                            <a href="manage_users.html">
+                            <a href="manage_users.php">
                                 <button class="btn btn-primary w-100">
                                     <i class="fas fa-users-cog me-2"></i>Manage Users
                                 </button>
@@ -119,7 +119,7 @@ checkIfadmin();
                             </li>
                         </ul>
                         <div class="mt-3">
-                            <a href="manage_trip.html">
+                            <a href="manage_trip.pjp">
                                 <button class="btn btn-success w-100">
                                     <i class="fas fa-clipboard-list me-2"></i>Manage Trips
                                 </button>

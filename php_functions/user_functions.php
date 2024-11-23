@@ -101,6 +101,7 @@ function getUser($userId){
 if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getTotalUsers') countUsers();
 if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'get30DayUsers') countUsersLastThirtyDays();
 if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getUser') getUser($_GET['userId']);
-
+if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'readUsers') readUsers();
+if($_SERVER['REQUEST_METHOD'] == 'DELETE' && $_GET['action'] == 'deleteUser') deleteTrip($_GET['userId']);   
 
 ?>
