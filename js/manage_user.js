@@ -1,4 +1,4 @@
-import { get30DaysUsers, getTotalUsers } from "./admin_dashboard";
+import { get30DaysUsers, getTotalUsers } from "./admin_dashboard.js";
 
 async function addToTable(tableBodyId, response){
 
@@ -12,11 +12,11 @@ async function addToTable(tableBodyId, response){
 
         const name_td = document.createElement('td');
         name_td.textContent = `${user['firstName']} ${user['lastName']}`;
-        tr.appendChild(user_td);
+        tr.appendChild(name_td);
 
         const role_td = document.createElement('td');
         role_td.textContent = user['role'];
-        tr.appendChild(destination_td);
+        tr.appendChild(role_td);
 
 
         const button = document.createElement('button');
@@ -79,7 +79,7 @@ function deleteUser(userId){
 function init(){
     getTotalUsers();
     get30DaysUsers();
-
+    getAllUsers();
 }
 
 document.addEventListener("DOMContentLoaded", init);

@@ -9,6 +9,6 @@ session_unset(); // Clears all session data
 session_destroy(); // Ends the session and clears session data on the server
 
 // Redirect the user back to the login page
-header('Location: login.php');
+header('Location: index.php');
 exit(); // Stop further script execution after redirect
 ?>

@@ -183,7 +183,7 @@ function joinTrip($tripId){
         die('Error in connection '. $conn->error);
     }
 
-    $statement->bind_param('ss', $userId, $tripId);
+    $statement->bind_param('ii', $userId, $tripId);
     $statement->execute();
     $result = $statement->get_result();
 
@@ -204,7 +204,7 @@ function joinTrip($tripId){
         die('Error in connection '. $conn->error);
     }
 
-    $statement->bind_param('ss', $userId, $tripId);
+    $statement->bind_param('ii', $userId, $tripId);
 
     
     if($statement->execute()){
@@ -226,7 +226,7 @@ function leaveTrip($tripId){
         die('Error in connection '. $conn->error);
     }
 
-    $statement->bind_param('ss', $userId, $tripId);
+    $statement->bind_param('ii', $userId, $tripId);
     $statement->execute();
     $result = $statement->get_result();
 
@@ -240,7 +240,7 @@ function leaveTrip($tripId){
         die('Error in connection '. $conn->error);
     }
 
-    $statement->bind_param('ss', $userId, $tripId);
+    $statement->bind_param('ii', $userId, $tripId);
     
     if($statement->execute()){
         updateSeats($tripId, 1);
@@ -253,6 +253,7 @@ function leaveTrip($tripId){
 
 function deleteTrip($tripId){
     global $conn;
+    echo $tripId;
 
     $statement = $conn->prepare('DELETE FROM mm_trips WHERE id = ?');
 
@@ -261,7 +262,7 @@ function deleteTrip($tripId){
         return;
     }
 
-    $statement->bind_param('s', $tripIds);
+    $statement->bind_param('i', $tripId);
     
     if($statement->execute()){
         echo '<script>alert("Trip Deleted")</script>';
@@ -340,6 +341,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['acti
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'joinTrip'
 && isset($_GET['tripId'])){
+    echo $_GET['tripId'];
     $tripId = $_GET['tripId'];
     joinTrip($tripId);
 }
@@ -354,5 +356,5 @@ if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getTotalTrips') co
 if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getActiveTrips') countActiveTrips();
 if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getTripById') getTripJson($_GET['tripId']);   
 if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'getAllTrips') getAllTrips();    
-if($_SERVER['REQUEST_METHOD'] == 'DELETE' && $_GET['action'] == 'deleteTrip') deleteTrip($_GET['tripId']);   
+if($_SERVER['REQUEST_METHOD'] == 'DELETE' && $_GET['action'] == 'deleteTrip' && isset($_GET['tripId'])) deleteTrip($_GET['tripId']);   
 ?>

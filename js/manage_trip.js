@@ -1,6 +1,6 @@
-import { getActiveTrips, getTotalTrips } from "./admin_dashboard";
+import { getActiveTrips, getTotalTrips } from "./admin_dashboard.js";
 
-import { getUserById } from "./user";
+import { getUserById } from "./user.js";
 
 async function addToTable(tableBodyId, response){
 
@@ -15,7 +15,7 @@ async function addToTable(tableBodyId, response){
 
         const creator_td = document.createElement('td');
         creator_td.textContent = `${user['firstName']} ${user['lastName']}`;
-        tr.appendChild(created_td);
+        tr.appendChild(creator_td);
 
         const destination_td = document.createElement('td');
         destination_td.textContent = trip['destination'];
@@ -61,7 +61,7 @@ async function addToTable(tableBodyId, response){
         button_td.appendChild(div);
 
         tr.appendChild(button_td);
-        button.addEventListener('click', ()=> deleteTrip(response['id']));
+        button.addEventListener('click', ()=> deleteTrip(trip['id']));
         
         tb.appendChild(tr);
     }
@@ -87,9 +87,9 @@ function getAllTrips(){
     
 }
 
-function deleteTrip(tripId){
+export function deleteTrip(tripId){
     const xhr = new XMLHttpRequest();
-    xhr.open('DELETE', `/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=deleteTrip&tripId=${tripId}`, true);
+    xhr.open('POST', `/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=deleteTrip&tripId=${tripId}`, true);
     xhr.onload = ()=>{
         console.log(xhr.responseText);
         alert('Successfully Deleted Trip');

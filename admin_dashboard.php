@@ -119,7 +119,7 @@ checkIfadmin();
                             </li>
                         </ul>
                         <div class="mt-3">
-                            <a href="manage_trip.pjp">
+                            <a href="manage_trip.php">
                                 <button class="btn btn-success w-100">
                                     <i class="fas fa-clipboard-list me-2"></i>Manage Trips
                                 </button>

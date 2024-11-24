@@ -26,7 +26,7 @@ checkRole();
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-road me-2"></i>MoveMates User Management</a>
             <div class="navbar-nav ms-auto">
-                <a href="admin_dashboard.html" class="btn btn-outline-light me-2">
+                <a href="admin_dashboard.php" class="btn btn-outline-light me-2">
                     <i class="fas fa-arrow-left me-1"></i>Back to Dashboard
                 </a>
             </div>
@@ -61,9 +61,6 @@ checkRole();
                     <table class="table table-striped table-hover mb-0">
                         <thead class="table-light">
                             <tr>
-                                <th>
-                                    <input type="checkbox" class="form-check-input" id="selectAll">
-                                </th>
                                 <th>User ID</th>
                                 <th>Name</th>
                                 <th>Role</th>

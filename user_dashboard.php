@@ -52,7 +52,7 @@ checkRole();
                     <a class="nav-link active"  href="create_trip.php">Create Trip</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active"  href="create_trip.php">Log Out</a>
+                    <a class="nav-link active"  href="logout.php">Log Out</a>
                 </li>
                       
             </ul>

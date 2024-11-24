@@ -26,7 +26,7 @@ function register($email, $password, $passwordConfirm, $firstName, $lastName){
 
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    $statement = $conn->prepare('INSERT into mm_users (email, password, role, firstName, lastName) VALUES (?, ?, ?, ?, ?)');
+    $statement = $conn->prepare('INSERT into mm_users (email, password, role, firstName, lastName) VALUES (?, ?, ?, ?, ?) RETURNING *');
 
     if(!$statement){
         die('Error in connection '. $conn->error);
