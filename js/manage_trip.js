@@ -88,11 +88,13 @@ function getAllTrips(){
 }
 
 export function deleteTrip(tripId){
+    console.log('Trip Id -> ', tripId);
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', `/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=deleteTrip&tripId=${tripId}`, true);
+    xhr.open('DELETE', `/~tanitoluwa.adebayo/web-tech-project/php_functions/trip_functions.php?action=deleteTrip&tripId=${tripId}`, true);
     xhr.onload = ()=>{
         console.log(xhr.responseText);
         alert('Successfully Deleted Trip');
+        location.reload();
     }
 
     xhr.send();

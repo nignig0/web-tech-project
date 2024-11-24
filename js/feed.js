@@ -2,7 +2,7 @@ import { deleteTrip } from "./manage_trip.js";
 import { getUserById } from "./user.js";
 
 function createCard(id, tripCreator, price, seatsLeft, depTime,
-    destination, tripType, inTrip = false, canDelete = false
+    meetUpSpot, destination, tripType, inTrip = false, canDelete = false
 ){
     return `<section>         
         <div class="container">             
@@ -18,7 +18,11 @@ function createCard(id, tripCreator, price, seatsLeft, depTime,
                             <div class="col-md-6">                             
                                 <h6 class="card-subtitle mb-2 text-muted">DESTINATION</h6>                             
                                 <h4 class="card-title">${destination}</h4>                           
-                            </div>                           
+                            </div>   
+                            <div class="col-md-6">                             
+                                <h6 class="card-subtitle mb-2 text-muted">TRIP TYPE</h6>                             
+                                <h4 class="card-title">${meetUpSpot}</h4>                           
+                            </div>                          
                             <div class="col-md-6">                             
                                 <h6 class="card-subtitle mb-2 text-muted">TRIP TYPE</h6>                             
                                 <h4 class="card-title">${tripType}</h4>                           
@@ -101,8 +105,10 @@ async function getTrips() {
                     response['originalCost']/(response['originalSeats'] - response['seats']+2), 
                     response['seats'], 
                     response['departureTime'],
+                    response['meetUpSpot'],
                     response['destination'], 
                     response['tripType'],
+                    
                     userTripIds.includes(response['id']),
                     response['userId'] == userId
                 );

@@ -26,7 +26,7 @@ function register($email, $password, $passwordConfirm, $firstName, $lastName){
 
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    $statement = $conn->prepare('INSERT into mm_users (email, password, role, firstName, lastName) VALUES (?, ?, ?, ?, ?) RETURNING *');
+    $statement = $conn->prepare('INSERT into mm_users (email, password, role, firstName, lastName) VALUES (?, ?, ?, ?, ?)');
 
     if(!$statement){
         die('Error in connection '. $conn->error);
@@ -35,7 +35,17 @@ function register($email, $password, $passwordConfirm, $firstName, $lastName){
 
     $statement->bind_param('sssss', $email, $hashedPassword, $role, $firstName, $lastName);
     if($statement->execute()){
-        $row = $result->fetch_assoc();
+        $lastInsertId = $conn->insert_id;
+        // Fetch the newly inserted user data
+        $selectQuery = $conn->prepare('SELECT * FROM mm_users WHERE id = ?');
+        $selectQuery->bind_param('i', $lastInsertId);
+        $selectQuery->execute();
+
+        if(!$selectQuery){
+            die('Error in connection '. $conn->error);
+        }
+        
+        $row = $selectQuery->fetch_assoc();
         $_SESSION['id'] = $row['id'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['firstName'] = $firstName;
