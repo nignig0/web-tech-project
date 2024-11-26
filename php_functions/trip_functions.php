@@ -38,7 +38,7 @@ function createTrip($seats, $tripType,
 
 function getTrips(){
     global $conn;
-    $statement = $conn->prepare('SELECT * FROM mm_trips WHERE departureTime > NOW() AND seats > 0 ORDER BY departureTime');
+    $statement = $conn->prepare('SELECT * FROM mm_trips WHERE departureTime >= NOW() AND seats > 0 ORDER BY departureTime');
     
     if(!$statement){
         die('Error in connection '. $conn->error);
