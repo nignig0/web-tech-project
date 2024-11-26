@@ -32,6 +32,7 @@ function login($email, $password){
         }
     }else{
         echo "<script>alert('password or email are incorrect')</script>";
+        header('Location: /~tanitoluwa.adebayo/web-tech-project/index.php');
     }
     $statement->close();
 }

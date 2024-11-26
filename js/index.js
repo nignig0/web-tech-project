@@ -23,7 +23,6 @@ document.getElementById('loginModal').addEventListener('submit', function(event)
         event.preventDefault();
     }
     if (isValid){
-        alert('Login successful');
         //submit the form
         document.getElementById('loginModal').submit();
     }
