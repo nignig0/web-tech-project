@@ -45,7 +45,8 @@ function register($email, $password, $passwordConfirm, $firstName, $lastName){
             die('Error in connection '. $conn->error);
         }
         
-        $row = $selectQuery->fetch_assoc();
+        $result = $selectQuery->get_result();
+        $row = $result->fetch_assoc();
         $_SESSION['id'] = $row['id'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['firstName'] = $firstName;

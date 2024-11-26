@@ -71,38 +71,46 @@ checkRole();
                 <!-- Form Title -->
                 <h3 class="mb-4">Create A Trip</h3>
                 <!-- Form -->
-                <form action = "php_functions/trip_functions.php?action=createTrip" method="POST">
+                <form action = "php_functions/trip_functions.php?action=createTrip" method="POST" id="createTripForm">
                     <div class="mb-3">
-                        <input type="text" class="form-control form-control-lg" placeholder="DESTINATION" name="destination">
+                        <input type="text" class="form-control form-control-lg" placeholder="DESTINATION" name="destination" id="destination">
+                        <!-- error meesage placedholder for destination -->
+                        <div id="destinationError" style="color: red;"></div>
                     </div>
 
                     <div class="mb-3">
-                        <input type="text" class="form-control form-control-lg" placeholder="MEET UP SPOT" name="meetUpSpot">
+                        <input type="text" class="form-control form-control-lg" placeholder="MEET UP SPOT" name="meetUpSpot" id ="meetUpSpot">
+                        <div id="meetUpSpotError" style="color: red;"></div>
                     </div>
                     
                     <!-- Trip Type Dropdown -->
                     <div class="mb-3">
-                        <select class="form-select form-select-lg" aria-label="Trip Type Selection" name="tripType">
+                        <select class="form-select form-select-lg" aria-label="Trip Type Selection" name="tripType" id="triptype">
                             <option selected disabled>TRIP TYPE</option>
                             <!-- <option value="roundTrip">Round Trip</option> -->
                             <option value="oneWay">One Way</option>
                         </select>
+                        <div id="tripTypeError" style="color: red;"></div>
                     </div>
                     
                     <div class="mb-3">
-                        <input type="number" class="form-control form-control-lg" placeholder="SEATS AVAILABLE" name="seats">
+                        <input type="number" class="form-control form-control-lg" placeholder="SEATS AVAILABLE" name="seats" id="seats">
+                        <div id="seatsError" style="color: red;"></div>
                     </div>
                     
                     <div class="mb-3">
-                        <input type="text" class="form-control form-control-lg" placeholder="PRICE" name="cost">
+                        <input type="text" class="form-control form-control-lg" placeholder="PRICE" name="cost" id="price">
+                        <div id="priceError" style="color: red;"></div>
                     </div>
                     
                     <div class="mb-3">
-                        <input type="date" class="form-control form-control-lg" placeholder="DEPARTURE DATE" name="depDate">
+                        <input type="date" class="form-control form-control-lg" placeholder="DEPARTURE DATE" name="depDate" id="date">
+                        <div id="dateError" style="color: red;"></div>
                     </div>
                     
                     <div class="mb-3">
-                        <input type="time" class="form-control form-control-lg" placeholder="DEPARTURE TIME" name="depTime">
+                        <input type="time" class="form-control form-control-lg" placeholder="DEPARTURE TIME" name="depTime" id="time">
+                        <div id="timeError" style="color: red;"></div>
                     </div>
 
                     <!-- Create Button -->
@@ -120,5 +128,6 @@ checkRole();
     </section>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/create_trip.js"></script>
 </body>
 </html>

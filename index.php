@@ -459,23 +459,18 @@ handleIfLoggedIn();
                             <div class="mb-4">
                                 <label for="emailInput" class="form-label">Email address</label>
                                 <input type="email" class="form-control form-control-lg" id="emailInput" name="email" required>
+                                <div id="emailError" style="color: red;"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="passwordInput" class="form-label">Password</label>
                                 <input type="password" class="form-control form-control-lg" id="passwordInput" name="password" required>
-                            </div>
-                            <div class="mb-4 form-check">
-                                <input type="checkbox" class="form-check-input" id="rememberMe">
-                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                                <div id="passwordError" style="color: red;"></div>
                             </div>
                             <div class="d-grid mb-4">
                                 <button type="submit" class="btn btn-lg sign-in">Sign in</button>
                             </div>
 
-                            <!-- Additional Options -->
-                            <div class="text-center mb-4">
-                                <a href="#" class="text-decoration-none">Forgot password?</a>
-                            </div>
+
                             <!-- Sign Up Link -->
                             <div class="text-center">
                                 <p class="mb-0">Don't have an account? <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign up</a></p>
@@ -512,27 +507,29 @@ handleIfLoggedIn();
                             <div class="mb-4">
                                 <label for="nameInput" class="form-label">First Name</label>
                                 <input type="text" class="form-control form-control-lg" id="firstnameInput" name="firstName" required>
+                                <div id="firstNameError" style="color: red;"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="nameInput" class="form-label">Last Name</label>
                                 <input type="text" class="form-control form-control-lg" id="lastnameInput" name="lastName" required>
+                                <div id="lastNameError" style="color: red;"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="signupEmail" class="form-label">Email address</label>
                                 <input type="email" class="form-control form-control-lg" id="signupEmail" name="email" required>
+                                <div id="emailError2" style="color: red !important; "></div>
                             </div>
                             <div class="mb-4">
                                 <label for="signupPassword" class="form-label">Password</label>
                                 <input type="password" class="form-control form-control-lg" id="signupPassword" name="password" required>
+                                <div id="passwordError" style="color: red"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="confirmPassword" class="form-label">Confirm Password</label>
                                 <input type="password" class="form-control form-control-lg" id="confirmPassword" name="passwordConfirm" required>
+                                <div id="confirmPasswordError" style="color: red;"></div>
                             </div>
-                            <div class="mb-4 form-check">
-                                <input type="checkbox" class="form-check-input" id="termsCheck" required>
-                                <label class="form-check-label" for="termsCheck">I agree to the Terms and Conditions</label>
-                            </div>
+
                             <div class="d-grid mb-4">
                                 <button type="submit" class="btn btn-lg create-account text-white">Create Account</button>
                             </div>
@@ -634,5 +631,6 @@ handleIfLoggedIn();
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
