@@ -52,7 +52,7 @@ function register($email, $password, $passwordConfirm, $firstName, $lastName){
         $_SESSION['firstName'] = $firstName;
         $_SESSION['role'] = $row['role'];
 
-        header('Location: '.$baseDir.'feed.php'); #take them to the feed
+        header('Location: /~tanitoluwa.adebayo/web-tech-project/feed.php'); #take them to the feed
     }else{
         die('Error creating user');
     }
