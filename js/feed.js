@@ -124,7 +124,7 @@ async function getTrips() {
                     if (userTripIds.includes(response['id'])) {
                         leaveTrip(response['id']);
                     }else if(response['userId'] == userId){
-                        deleteTrip(response['userId']);
+                        deleteTrip(response['id']);
                     } else {
                         joinTrip(response['id']);
                     }
