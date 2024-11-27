@@ -130,8 +130,7 @@ createTripForm.addEventListener('submit', (e) => {
             meetUpSpot
         };
         
-        
-        createTripForm.reset();
+        document.getElementById('createTripForm').submit();
     }
 });
 

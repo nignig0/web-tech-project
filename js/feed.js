@@ -20,7 +20,7 @@ function createCard(id, tripCreator, price, seatsLeft, depTime,
                                 <h4 class="card-title">${destination}</h4>                           
                             </div>   
                             <div class="col-md-6">                             
-                                <h6 class="card-subtitle mb-2 text-muted">TRIP TYPE</h6>                             
+                                <h6 class="card-subtitle mb-2 text-muted">MEET UP</h6>                             
                                 <h4 class="card-title">${meetUpSpot}</h4>                           
                             </div>                          
                             <div class="col-md-6">                             
