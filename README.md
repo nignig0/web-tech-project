@@ -3,7 +3,7 @@ Webtech project by Tani, Susanna, Edward and Welile.
 
 Front end- vanilla js and HTML, CSS (Bootstrap framework)
 backend - PHP
-databse - mongodb
+database -sql
 
 To run the project, you would need to change the database details in config.php
 
